@@ -1,0 +1,17 @@
+{
+  "name": "hooks-emitter",
+  "description": "Event emitter, but for hooks",
+  "version": "0.0.1",
+  "author": "Eldar Gabdullin <eldargab@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eldargab/hooks-emitter"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
