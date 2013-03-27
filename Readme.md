@@ -1,3 +1,5 @@
+# hooks-emitter
+
 ## What's this and why?
 
 Often event emitters are used not for sending signals to the outside world but
@@ -5,9 +7,9 @@ as a general purpose hooking API. The difference is that handlers for hooks are
 known in advance, they are not specific to the concrete instance. The natural
 thing to do in such cases is:
 
-```
+```javascript
 Widget.prototype.on('show', function() {
-  // do something before showing
+  // do something
 })
 ```
 
@@ -17,10 +19,10 @@ all subscriptions in constructor, which is
   * slow
   * inflexible (I think `Super.call(this)` is a smell)
 
-[hooks-emitter](hooks-emitter) implemented differently. It allows you to add
+This project implements emitter in a different way. It allows you to add
 subscriptions on prototype and generally you should not think about clobbering
-and `Emitter.call(this)` calls. At the moment of writing it can be used as a
-drop in replacement for (component/emitter).
+or `Emitter.call(this)` calls. At the moment of writing it can be used as a
+drop in replacement for [component/emitter](https://github.com/component/emitter).
 
 ## Examples
 
@@ -46,22 +48,18 @@ calls.should.eql(['proto', 'emitter'])
 
 proto.emit('foo')
 
-// second time only `proto` handler should be called
 calls.should.eql(['proto', 'emitter', 'proto'])
 ```
 
-Funky things like
+Addition of handlers to prototype when child instance was already created is not supported.
+For such case behaviour is undefined.
 
 ```javascript
 var proto = new Emitter
 var instance = Object.create(proto)
-
-proto.on('foo', listener) // handler added after child was already created
-
+proto.on('foo', listener) // that's a bit funky
 instance.emit('foo')
 ```
-
-are not supported. For such case behaiviour is undefined.
 
 ## Installation
 
