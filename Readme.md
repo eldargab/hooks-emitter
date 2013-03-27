@@ -3,9 +3,9 @@
 ## What's this and why?
 
 Often event emitters are used not for sending signals to the outside world but
-as a general purpose hooking API. The difference is that handlers for hooks are
-known in advance, they are not specific to the concrete instance. The natural
-thing to do in such cases is:
+as a general purpose hooking API. The difference is that hooks are
+known in advance, they are not specific to concrete instance. The natural
+thing to do for such cases is:
 
 ```javascript
 Widget.prototype.on('show', function() {
@@ -14,7 +14,7 @@ Widget.prototype.on('show', function() {
 ```
 
 Obviously traditional event emitters do not allow that. They force you to do
-all subscriptions in constructor, which is
+all subscriptions in constructor. That is
 
   * slow
   * inflexible (I think `Super.call(this)` is a smell)
