@@ -3,7 +3,7 @@
   "repo": "eldargab/hooks-emitter",
   "description": "Event emitter, but for hooks",
   "version": "0.0.1",
-  "keywords": ['emitter', 'hooks'],
+  "keywords": ["emitter", "hooks"],
   "license": "MIT",
   "scripts": [
     "index.js"
