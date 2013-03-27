@@ -56,9 +56,6 @@ describe('Hooks emitter', function() {
     })
 
     it('should work with .once()', function() {
-      var emitter = new Emitter
-      var calls = []
-
       function one() { calls.push('one'); }
 
       emitter.once('foo', one)
@@ -88,9 +85,6 @@ describe('Hooks emitter', function() {
 
   describe('.off(event)', function(){
     it('should remove all listeners for an event', function() {
-      var emitter = new Emitter
-      var calls = []
-
       function one() { calls.push('one'); }
       function two() { calls.push('two'); }
 
@@ -108,7 +102,6 @@ describe('Hooks emitter', function() {
   describe('.listeners(event)', function() {
     describe('when handlers are present', function() {
       it('should return an array of callbacks', function() {
-        var emitter = new Emitter
         function foo(){}
         emitter.on('foo', foo)
         var l = emitter.listeners('foo')
@@ -120,7 +113,6 @@ describe('Hooks emitter', function() {
 
     describe('when no handlers are present', function() {
       it('should return an empty array', function() {
-        var emitter = new Emitter
         emitter.listeners('foo').should.eql([])
       })
     })
@@ -129,7 +121,6 @@ describe('Hooks emitter', function() {
   describe('.hasListeners(event)', function(){
     describe('when handlers are present', function() {
       it('should return true', function(){
-        var emitter = new Emitter
         emitter.on('foo', function(){})
         emitter.hasListeners('foo').should.be.true
       })
@@ -137,7 +128,6 @@ describe('Hooks emitter', function() {
 
     describe('when no handlers are present', function() {
       it('should return false', function() {
-        var emitter = new Emitter
         emitter.hasListeners('foo').should.be.false
       })
     })
